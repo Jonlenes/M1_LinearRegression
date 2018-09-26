@@ -7,9 +7,9 @@ Nas seções seguintes será apresentado o conjunto de dados para essa atividade
 ### Atividades
 Para a exploração da RL foram realizadas as seguintes atividades:
 
-	* Preparação e carregamento do dataset e implementação da RL;
-	* Feature scaling e Feature Selection;
-	* Remoção de ruídos e alterações no Target.
+* Preparação e carregamento do dataset e implementação da RL;
+* Feature scaling e Feature Selection;
+* Remoção de ruídos e alterações no Target.
 
 ## Análise e carregamento do dataset
 O dataset que será utilizado neste trabalho para a exploração da RL é o Online News Popularity.

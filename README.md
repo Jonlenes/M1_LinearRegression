@@ -1,61 +1,31 @@
-# Linear Regression
+# Linear Regression to predict Online News Popularity
 
-## Introdução
-
-Nas seções seguintes será apresentado o conjunto de dados para essa atividade, e todos os passos realizados para a obtenção do melhor modelo possível com a Regressão Linear (RL).
+For more information, read Report.pdf (in Portuguese) or contact me.
 
 ### Atividades
-Para a exploração da RL foram realizadas as seguintes atividades:
 
-* Preparação e carregamento do dataset e implementação da RL;
-* Feature scaling e Feature Selection;
-* Remoção de ruídos e alterações no Target.
+* Preparation and loading of the dataset and implementation of LR;
+* Feature scaling and Feature Selection;
+* Removal of noise and changes in Target.
 
-## Análise e carregamento do dataset
-O dataset que será utilizado neste trabalho para a exploração da RL é o Online News Popularity.
+## LR implementation
 
-O mesmo contém 31715 exemplos no arquivo de train. Desses exemplos 80% (25372 exemplos) foram utilizados para fazer o treinamento do algoritmo e 20% (6343 exemplos) foram utilizados para validar o treinamento.
-
-No arquivo de test, tem-se um total de 7929 exemplos que foi utilizado para fazer os testes após se obter o melhor modelo.  
-
-A primeira etapa consiste na análise do dataset e dos seus features. O dataset foi carregado e as duas primeiras colunas foram removidas, pois as mesmas não são preditivas. Também foi separada a ultima coluna do arquivo de train, pois ela é o target dos exemplos. 
-
-Apos tirar essas 3 colunas dos exemplo, restaram 58 colunas que serão utilizadas na RL.
-
-## Implementação da RL
-
-Finalizado o carregamento do dataset e a divisão dos features, o próximo passo consistiu em implementar uma classe de LR que computasse a mesma. Essa classe contém os métodos necessários para ser utilizados na RL (como, por exemplo,  gradient_descent, normal_equation cost_function, fit, predict, rmse e r2_score).
-
-Com essa classe, foi realizado o primeiro teste sem nenhuma alteração dos dados. A RL não convergiu e função custo aumentou na casa de 10^20 apos cada iteração. O gráfico deste experimento com alguns valores diferentes para alfa pode ser visto na abaixo. Esse gráfico apresenta a relação entre quantidade de interações e o valor da função de custo.
+gradient_descent, normal_equation cost_function, fit, predict, rmse e r2_score.
 
 <p align="center">
   <img src="imgs/cf_inicial.png">
 </p>
 
 ## Feature scaling
-
-Como apresentação anteriomente, no primeiro teste não houve convergência da RL utilizando o dataset sem alteração, então pode se iniciar a alteação do dataset fazendo um feature scaling.
-
-O feature scaling é um método usado para padronizar o intervalo de variáveis independentes ou recursos de dados.
-
-Existem diversos métodos para realizar o feature scaling, dentre eles, neste trabalho foram explorados o Rescaling, Mean normalisation, Standardization. 
-
-O Rescaling foi aplicado de duas formas diferentes: somente para os features que possui o valor mínimo menor do que -1 ou o máximo maior do que 1; e para todos os features. A aplicação em todos os features obteve melhor resultado.
-
-Aplicando o Rescaling em todos os features, foi testados vários alfas para encontrar aquele que proporcionasse o menor custo para a RL. O resultado deste experimento pode ser observado na na figura abaixo. 
+Rescaling, Mean normalisation, Standardization. 
 
 <p align="center">
   <img src="imgs/cf_scaling1.png">
 </p>
 
-Refinando a análise do alfa, tem o melhor resultado da função de custo (6*10^7), com o valor de alfa igual a 0.25, como pode ser visto na figura abaixo. Esse modelo treinado possui Root Mean Square Error (RMSE) para o conjunto de dados de validação de aproximadamente 1*10^4.
-
 <p align="center">
   <img src="imgs/cf_best_alfa_scaling.png">
 </p>
-
-O mesmos testes foram realizados para o Mean normalisation e Standardization. A comparação entres os métodos pode ser visto na Figura abaixo.
-Apesar de o Standardization ter apresentado uma pequena vantagem em relação aos outros, tanta a função de custo, quanto o RMSE continua na casa de 10^7 e 10^4, respectivamente.
 
 <p align="center">
   <img src="imgs/fc_scaling_compare.png">
